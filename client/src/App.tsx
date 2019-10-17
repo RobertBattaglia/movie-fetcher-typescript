@@ -1,16 +1,15 @@
 import * as React from 'react';
 
 import Search from './components/Search';
+import Movies from './components/Movies';
 
-interface IProps {
-  name: string;
-}
+const App: React.FC = () => {
+  const [movies, setMovies] = React.useState<any[]>([]);
 
-const App: React.FC<IProps> = ({ name }) => {
   return (
     <>
-      <Search placeholder="The Godfather" />
-      <p>{`Hello ${name}`}</p>
+      <Search placeholder="The Godfather" setMovies={setMovies} />
+      <Movies movies={movies} />
     </>
   );
 };

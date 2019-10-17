@@ -2,39 +2,40 @@ import * as React from 'react';
 import axios from 'axios';
 interface IProps {
   placeholder: string;
+  setMovies: Function;
 }
 
-const Search: React.FC<IProps> = ({ placeholder }) => {
-  const [movieInp, changeMovieInp] = React.useState('');
+const Search: React.FC<IProps> = ({ placeholder, setMovies }) => {
+  const [searchInput, setSearchInput] = React.useState('');
 
   const changeInp = (e: React.FormEvent<HTMLInputElement>): void => {
-    changeMovieInp(e.currentTarget.value);
+    setSearchInput(e.currentTarget.value);
   };
 
   const clearInp = (): void => {
-    changeMovieInp('');
+    setSearchInput('');
   };
 
-  const searchMovie = async (
+  const searchMovies = async (
     e: React.FormEvent<HTMLButtonElement>
   ): Promise<void> => {
     e.preventDefault();
-    const movieResponse = await axios.get(`/movie?movie=${movieInp}`);
+    const movieResponse = await axios.get(`/movie?movie=${searchInput}`);
     clearInp();
-    console.log(movieResponse);
+    setMovies(movieResponse.data.results);
   };
 
   return (
     <form>
       <input
         onChange={changeInp}
-        value={movieInp}
+        value={searchInput}
         type="text"
         name="movie-search"
         id="movie-search"
         placeholder={placeholder}
       ></input>
-      <button onClick={searchMovie} type="submit">
+      <button onClick={searchMovies} type="submit">
         Search Movie
       </button>
     </form>
