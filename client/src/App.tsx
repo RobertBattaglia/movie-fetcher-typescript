@@ -2,11 +2,11 @@ import * as React from 'react';
 
 import Search from './components/Search';
 
-interface Props {
+interface IProps {
   name: string;
 }
 
-const App: React.FC<Props> = ({ name }) => {
+const App: React.FC<IProps> = ({ name }) => {
   return (
     <>
       <Search placeholder="The Godfather" />
