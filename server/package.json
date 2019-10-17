@@ -5,15 +5,17 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "env-cmd -f .env.development nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "env-cmd": "^10.0.1",
     "nodemon": "^1.19.4"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "express": "^4.17.1"
   }
 }
