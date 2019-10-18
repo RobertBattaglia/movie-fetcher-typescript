@@ -1,6 +1,13 @@
 import * as React from 'react';
+import styled from '@emotion/styled';
 
 import Movie from './Movie';
+
+const Container = styled('div')`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+`;
 
 interface IProps {
   movies: any[];
@@ -8,7 +15,7 @@ interface IProps {
 
 const Movies: React.FC<IProps> = ({ movies }) => {
   return (
-    <div>
+    <Container>
       {movies.map(movie => (
         <Movie
           key={movie.id}
@@ -18,7 +25,7 @@ const Movies: React.FC<IProps> = ({ movies }) => {
           imgSrc={movie.poster_path}
         />
       ))}
-    </div>
+    </Container>
   );
 };
 
