@@ -1,5 +1,7 @@
 import * as React from 'react';
+import { Global } from '@emotion/core';
 
+import theme from './theme';
 import Search from './components/Search';
 import Movies from './components/Movies';
 
@@ -8,6 +10,7 @@ const App: React.FC = () => {
 
   return (
     <>
+      <Global styles={theme} />
       <Search placeholder="The Godfather" setMovies={setMovies} />
       <Movies movies={movies} />
     </>
